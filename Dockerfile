@@ -17,6 +17,8 @@ RUN apt-get update &&  \
     rm "node-v$NODE_VERSION-linux-x64.tar.gz" && \
     npm install -g npm@"$NPM_VERSION" && \
     npm install -g cordova@"$CORDOVA_VERSION" ionic@"$IONIC_VERSION" && \
+    npm install -g gulp && \
+    npm install -g node-gyp && \
     npm cache clear --force && \
     gem install sass && \
     git config --global user.email "lucas@lapou.com.br" && \
