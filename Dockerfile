@@ -3,7 +3,7 @@ LABEL maintainer="lucas@lapou.com.br"
 
 ENV DEBIAN_FRONTEND=noninteractive \
     ANDROID_HOME=/opt/android-sdk-linux \
-    NODE_VERSION=4.7.0 \
+    NODE_VERSION=4.8.4 \
     NPM_VERSION=2.15.8 \
     IONIC_VERSION=2.1.14 \
     CORDOVA_VERSION=6.4.0 \
@@ -70,6 +70,7 @@ RUN unzip ${ANDROID_HOME}/temp/*.zip -d ${ANDROID_HOME}
 
 # Test First Build so that it will be faster later
 RUN cd myApp && \
+    npm install -f --unsafe-perm && \
     ionic cordova build android --prod --no-interactive --release
 
 WORKDIR myApp
