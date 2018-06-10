@@ -3,7 +3,7 @@ LABEL maintainer="lucas@lapou.com.br"
 
 ENV DEBIAN_FRONTEND=noninteractive \
     ANDROID_HOME=/opt/android-sdk-linux \
-    NODE_VERSION=4.8.4 \
+    NODE_VERSION=4.7.0 \
     NPM_VERSION=2.15.8 \
     IONIC_VERSION=2.1.14 \
     CORDOVA_VERSION=6.4.0 \
