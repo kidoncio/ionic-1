@@ -1,4 +1,4 @@
-FROM  ubuntu:17.04
+FROM debian:jessie
 LABEL maintainer="lucas@lapou.com.br"
 
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -12,14 +12,16 @@ ENV DEBIAN_FRONTEND=noninteractive \
 # Install basics
 RUN apt-get update
 
-RUN apt-get install -y git wget curl unzip ruby ruby-dev gcc make
+RUN apt-get install -y wget curl unzip ruby ruby-dev gcc make
 
 RUN curl --retry 3 -SLO "http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" && \
     tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1
 
 RUN npm install -g npm@"$NPM_VERSION"
 
+RUN npm install -g grunt-cli
 RUN npm install -g gulp
+RUN npm install -g bower
 
 RUN npm install -g cordova@"$CORDOVA_VERSION" ionic@"$IONIC_VERSION"
    
