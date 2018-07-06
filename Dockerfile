@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     NODE_VERSION=4.7.0 \
     NPM_VERSION=2.15.8 \
     IONIC_VERSION=2.1.14 \
-    CORDOVA_VERSION=6.4.0 \
+    CORDOVA_VERSION=4.2.0 \
     GRADLE_VERSION=2.2
 
 # Install basics
@@ -14,12 +14,17 @@ RUN apt-get update &&  \
     apt-get install -y git wget curl unzip ruby ruby-dev gcc make && \
     curl --retry 3 -SLO "http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" && \
     tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 && \
-    rm "node-v$NODE_VERSION-linux-x64.tar.gz" && \
-    npm install -g npm@"$NPM_VERSION" && \
-    npm install -g cordova@"$CORDOVA_VERSION" ionic@"$IONIC_VERSION" && \
-    npm cache clear --force && \
-    ionic start myApp sidemenu --no-interactive
+    rm "node-v$NODE_VERSION-linux-x64.tar.gz"
 
+RUN npm install -g npm@"$NPM_VERSION"
+
+RUN npm install -g gulp
+
+RUN npm install -g cordova@"$CORDOVA_VERSION" ionic@"$IONIC_VERSION"
+   
+RUN npm cache clear --force
+    
+RUN ionic start myApp sidemenu --no-interactive
 
 #ANDROID
 #JAVA
